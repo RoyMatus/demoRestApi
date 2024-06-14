@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.*;
+
 import java.time.LocalDateTime;
 
 /**
@@ -47,6 +48,7 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@RequiredArgsConstructor()
 @ToString(includeFieldNames = true)
 @EqualsAndHashCode
 public class Record {
@@ -59,7 +61,8 @@ public class Record {
      * generated.
      * </p>
      */
-    private @Id @GeneratedValue Long id;
+    private @Id
+    @GeneratedValue Long id;
 
     /**
      * The name associated with the Record.
@@ -78,4 +81,10 @@ public class Record {
      * </p>
      */
     private LocalDateTime dateTime;
+
+    public Record(String name, String comment, LocalDateTime dateTime) {
+        this.name = name;
+        this.comment = comment;
+        this.dateTime = dateTime;
+    }
 }

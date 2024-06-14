@@ -1,4 +1,6 @@
 package com.example.demorestapi;
 
-public interface RecordRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RecordRepository extends JpaRepository<Record, Long> {
 }
