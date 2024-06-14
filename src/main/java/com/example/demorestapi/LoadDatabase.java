@@ -22,6 +22,10 @@ public class LoadDatabase {
             log.info("Loading records from database " + repository.save(new Record("Name 2",
                     "Comment 2",
                     LocalDateTime.now())));
+            System.out.println("BLABLA " + new Record("Name 1",
+                    "Comment 1",
+                    LocalDateTime.now()).toString());
+            System.out.println();
         };
     }
 }

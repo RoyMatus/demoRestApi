@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * The Record class represents an entity in the system.
@@ -49,8 +50,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor()
-@ToString(includeFieldNames = true)
-@EqualsAndHashCode
 public class Record {
 
     /**
@@ -67,7 +66,7 @@ public class Record {
     /**
      * The name associated with the Record.
      */
-    private String name;
+    public String name;
 
     /**
      * The comment associated with the Record.
@@ -86,5 +85,28 @@ public class Record {
         this.name = name;
         this.comment = comment;
         this.dateTime = dateTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Record{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", comment='" + comment + '\'' +
+                ", dateTime=" + dateTime +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Record record = (Record) o;
+        return Objects.equals(id, record.id) && Objects.equals(name, record.name) && Objects.equals(comment, record.comment) && Objects.equals(dateTime, record.dateTime);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, comment, dateTime);
     }
 }
