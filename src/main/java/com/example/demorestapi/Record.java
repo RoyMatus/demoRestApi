@@ -45,12 +45,16 @@ import java.util.Objects;
  * @since 2024-06-13
  */
 @Entity
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@RequiredArgsConstructor()
 public class Record {
+    public Record() {
+    }
+
+    public Record(Long id, String name, String comment, LocalDateTime dateTime) {
+        this.id = id;
+        this.name = name;
+        this.comment = comment;
+        this.dateTime = dateTime;
+    }
 
     /**
      * The unique identifier for the Record.
@@ -73,6 +77,38 @@ public class Record {
      */
     private String comment;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
     /**
      * The date and time associated with the Record.
      * <p>
@@ -89,12 +125,7 @@ public class Record {
 
     @Override
     public String toString() {
-        return "Record{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", comment='" + comment + '\'' +
-                ", dateTime=" + dateTime +
-                '}';
+        return "Record{" + "id=" + id + ", name='" + name + '\'' + ", comment='" + comment + '\'' + ", dateTime=" + dateTime + '}';
     }
 
     @Override
