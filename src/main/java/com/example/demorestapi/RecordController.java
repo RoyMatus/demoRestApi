@@ -14,6 +14,11 @@ public class RecordController {
         this.repository = repository;
     }
 
+    @GetMapping("/")
+    public String hello() {
+        return "Hello World.\n I'm \"demoRestApi\" application.\n";
+    }
+
     @GetMapping("/records")
     List<Record> getAllRecords() {
         return repository.findAll();
@@ -35,6 +40,7 @@ public class RecordController {
         return repository.findById(id).map(recordUpdated -> {
             recordUpdated.setName(record.getName());
             recordUpdated.setComment(record.getComment());
+            // TODO: 16.06.2024 delete date and id 
             recordUpdated.setDateTime(LocalDateTime.now());
             recordUpdated.setId(record.getId());
             return repository.save(recordUpdated);
