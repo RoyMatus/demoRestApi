@@ -1,55 +1,18 @@
 package com.example.demorestapi;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import lombok.*;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-/**
- * The Record class represents an entity in the system.
- * <p>
- * This class is annotated with JPA annotations to map it to a database table,
- * and Lombok annotations to automatically generate boilerplate code such as
- * getters, setters, constructors, toString, equals, and hashCode methods.
- * </p>
- * <p>
- * The {@link Entity} annotation specifies that the class is an entity and is
- * mapped to a database table.
- * The {@link Id} and {@link GeneratedValue} annotations are used to define the
- * primary key and its generation strategy.
- * </p>
- * <p>
- * Lombok annotations used in this class:
- * <ul>
- * <li>{@link Getter} - Generates getters for all fields.</li>
- * <li>{@link Setter} - Generates setters for all fields.</li>
- * <li>{@link AllArgsConstructor} - Generates a constructor with a parameter for each field in the class.</li>
- * <li>{@link NoArgsConstructor} - Generates a no-arguments constructor.</li>
- * <li>{@link ToString} - Generates a toString method that includes the field names.</li>
- * <li>{@link EqualsAndHashCode} - Generates equals and hashCode methods.</li>
- * </ul>
- * </p>
- *
- * <p>
- * Example usage:
- * <pre>
- *     Record record = new Record(1L, "John Doe", "This is a comment", LocalDateTime.now());
- *     System.out.println(record);
- * </pre>
- * </p>
- *
- * @version 1.0
- * @since 2024-06-13
- */
+
 @Entity
+@Table(name ="records")
 public class Record {
     public Record() {
     }
 
-    public Record(Long id, String name, String comment, LocalDateTime dateTime) {
+    public Record(Integer id, String name, String comment, LocalDateTime dateTime) {
         this.id = id;
         this.name = name;
         this.comment = comment;
@@ -65,23 +28,23 @@ public class Record {
      * </p>
      */
     private @Id
-    @GeneratedValue Long id;
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY) long id;
 
-    /**
-     * The name associated with the Record.
-     */
-    public String name;
+    @Column(name = "name")
+    private String name;
 
-    /**
-     * The comment associated with the Record.
-     */
+    @Column(name = "comment")
     private String comment;
 
-    public Long getId() {
+    @Column(name = "datetime")
+    private LocalDateTime dateTime;
+
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -106,20 +69,6 @@ public class Record {
     }
 
     public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
-    }
-
-    /**
-     * The date and time associated with the Record.
-     * <p>
-     * This field represents the timestamp when the record was created or last updated.
-     * </p>
-     */
-    private LocalDateTime dateTime;
-
-    public Record(String name, String comment, LocalDateTime dateTime) {
-        this.name = name;
-        this.comment = comment;
         this.dateTime = dateTime;
     }
 

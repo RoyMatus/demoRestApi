@@ -16,6 +16,6 @@ public class RecordNotFoundAdvice {
 
     @ResponseBody
     String handleRecordNotFoundException(RecordNotFoundException e, HttpServletRequest request) {
-        return "BLALBALBA";
+        return "Record not found.";
     }
 }
