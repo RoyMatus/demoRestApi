@@ -4,15 +4,16 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.UUID;
 
 
 @Entity
-@Table(name ="records")
+@Table(name = "records")
 public class Record {
     public Record() {
     }
 
-    public Record(Integer id, String name, String comment, LocalDateTime dateTime) {
+    public Record(UUID id, String name, String comment, LocalDateTime dateTime) {
         this.id = id;
         this.name = name;
         this.comment = comment;
@@ -29,7 +30,7 @@ public class Record {
      */
     private @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY) long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) UUID id;
 
     @Column(name = "name")
     private String name;
@@ -40,11 +41,18 @@ public class Record {
     @Column(name = "datetime")
     private LocalDateTime dateTime;
 
-    public long getId() {
+    public Record(String name, String comment) {
+        this.id = UUID.randomUUID();
+        this.name = name;
+        this.comment = comment;
+        this.dateTime = LocalDateTime.now();
+    }
+
+    public UUID getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

@@ -1,9 +1,12 @@
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+DROP TABLE IF EXISTS records;
+
 CREATE TABLE IF NOT EXISTS records
 (
-    id       BIGSERIAL PRIMARY KEY,
+
+    id uuid DEFAULT gen_random_uuid() PRIMARY KEY ,
     name     VARCHAR(200) not null,
     comment  TEXT         not null,
     datetime TIMESTAMP    not null
 );
-
--- DROP TABLE IF EXISTS records
