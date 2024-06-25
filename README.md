@@ -3,7 +3,7 @@ Demo REST API is a personal playground
 to learn different programming technologies.
 
 ## Installation
-Uou need:
+You need:
 - Java 17
 - Docker
 - Postgres
@@ -19,8 +19,9 @@ Get all records from database: GET http://localhost:8080/records
 - [x] Create Postgres table programmatically
 - [x] Fill the table with random data 
 - [ ] Put it all in docker
+- [ ] Make different properties for different environments
 - [ ] Add info how to run it on another machine
-- [ ] Make tests
+- [ ] Make tests (cucumber?)
 - [ ] UI
 - [ ] Complete README.md
 
