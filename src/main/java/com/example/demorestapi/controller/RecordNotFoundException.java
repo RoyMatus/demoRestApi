@@ -1,4 +1,4 @@
-package com.example.demorestapi;
+package com.example.demorestapi.controller;
 
 public class RecordNotFoundException extends RuntimeException {
     public RecordNotFoundException(Long id) {

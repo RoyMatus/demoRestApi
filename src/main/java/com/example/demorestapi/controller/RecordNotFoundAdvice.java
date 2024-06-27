@@ -1,4 +1,4 @@
-package com.example.demorestapi;
+package com.example.demorestapi.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.ExceptionHandler;

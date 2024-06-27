@@ -21,6 +21,8 @@ Get all records from database: GET http://localhost:8080/records
 - [ ] Put it all in docker
 - [ ] Make different properties for different environments
 - [ ] Add info how to run it on another machine
+- [ ] Authorization
+- [ ] S3 bucket
 - [ ] Make tests (cucumber?)
 - [ ] UI
 - [ ] Complete README.md

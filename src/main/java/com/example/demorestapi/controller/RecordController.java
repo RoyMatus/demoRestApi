@@ -1,5 +1,7 @@
-package com.example.demorestapi;
+package com.example.demorestapi.controller;
 
+import com.example.demorestapi.model.Record;
+import com.example.demorestapi.repository.RecordRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -20,9 +22,7 @@ public class RecordController {
     }
 
     @GetMapping("/records")
-    List<Record> getAllRecords() {
-        return repository.findAll();
-    }
+    List<Record> getAllRecords() { return repository.findAll(); }
 
     @PostMapping("/records")
     Record createRecord(@RequestBody Record record) {
@@ -38,8 +38,8 @@ public class RecordController {
     @PutMapping("/records/{id}")
     Record updateRecord(@RequestBody Record record, @PathVariable long id) {
         return repository.findById(id).map(recordUpdated -> {
-            recordUpdated.setName(record.getName());
-            recordUpdated.setComment(record.getComment());
+            recordUpdated.setTitle(record.getTitle());
+            recordUpdated.setDescription(record.getDescription());
             // TODO: 16.06.2024 delete date and id 
             recordUpdated.setDateTime(LocalDateTime.now());
             recordUpdated.setId(record.getId());
