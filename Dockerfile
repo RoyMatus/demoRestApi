@@ -1,5 +1,6 @@
 FROM alpine:latest
 LABEL authors="Roy Matus"
+MAINTAINER Roy Matus <piligrim18@gmail.com>
 
 RUN  apk update \
   && apk upgrade \
@@ -12,6 +13,6 @@ RUN  apk update \
 
 COPY build/libs/demoRestApi-0.0.1-SNAPSHOT.jar /
 
-EXPOSE 8080
+EXPOSE 8082
 
 ENTRYPOINT ["java","-jar","/demoRestApi-0.0.1-SNAPSHOT.jar"]
