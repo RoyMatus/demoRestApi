@@ -2,19 +2,19 @@ package com.example.demorestapi.controller;
 
 import com.example.demorestapi.model.Record;
 import com.example.demorestapi.repository.RecordRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
+@RequiredArgsConstructor
+@RequestMapping("api/v1")
 public class RecordController {
 
     private final RecordRepository repository;
-
-    public RecordController(RecordRepository repository) {
-        this.repository = repository;
-    }
 
     @GetMapping("/")
     public String hello() {
@@ -31,12 +31,12 @@ public class RecordController {
     }
 
     @GetMapping("/records/{id}")
-    Record getRecordById(@PathVariable long id) {
+    Record getRecordById(@PathVariable UUID id) {
         return repository.findById(id).orElseThrow(() -> new RecordNotFoundException(id));
     }
 
     @PutMapping("/records/{id}")
-    Record updateRecord(@RequestBody Record record, @PathVariable long id) {
+    Record updateRecord(@RequestBody Record record, @PathVariable UUID id) {
         return repository.findById(id).map(recordUpdated -> {
             recordUpdated.setTitle(record.getTitle());
             recordUpdated.setDescription(record.getDescription());
@@ -48,7 +48,7 @@ public class RecordController {
     }
 
     @DeleteMapping("/records/{id}")
-    void deleteRecordById(@PathVariable long id) {
+    void deleteRecordById(@PathVariable UUID id) {
         repository.deleteById(id);
     }
 }

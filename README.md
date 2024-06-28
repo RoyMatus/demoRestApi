@@ -15,17 +15,5 @@ Get-ChildItem Env:
 ## Usage
 Get all records from database: GET http://localhost:8080/records
 
-## Roadmap:
-- [x] Create Postgres table programmatically
-- [x] Fill the table with random data 
-- [ ] Put it all in docker
-- [ ] Make different properties for different environments
-- [ ] Add info how to run it on another machine
-- [ ] Authorization
-- [ ] S3 bucket
-- [ ] Make tests (cucumber?)
-- [ ] UI
-- [ ] Complete README.md
-
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
